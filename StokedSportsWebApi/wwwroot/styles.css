@@ -1,0 +1,41 @@
+table {
+    border-collapse: collapse;
+    border-style: none !important;
+    margin-top: 2%;  
+  
+  }
+body {
+   
+
+}
+   td {
+    text-align: center;
+    vertical-align: top;
+    padding: 10px;
+    min-width: 400px;
+  
+  }
+  .lane-body{
+    min-height:400px;
+    text-align: left;
+     background-color:gainsboro;
+  }
+  .btn-box{
+    padding-bottom: 10px;
+    text-align: center;
+  }
+  .btn-box button{
+    width: 100%;
+  }
+  .hide-scroll{
+      overflow: scroll;
+  }
+  
+  .hide-scroll::-webkit-scrollbar {
+      background: transparent; /* make scrollbar transparent */
+      width: 0px;
+  }
+
+
+
+

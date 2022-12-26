@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductiveWebApi", "StokedSportsWebApi\ProductiveWebApi.csproj", "{AB7E8436-CD84-4036-8987-32595A05BE78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdenityService", "StokedSportsIdenityService\IdenityService.csproj", "{2F1318F3-9D1F-44F7-B387-3EEFD9B08AAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B94E1AC2-34BA-4F94-A7E4-C4C419F859B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB7E8436-CD84-4036-8987-32595A05BE78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7E8436-CD84-4036-8987-32595A05BE78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7E8436-CD84-4036-8987-32595A05BE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7E8436-CD84-4036-8987-32595A05BE78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F1318F3-9D1F-44F7-B387-3EEFD9B08AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F1318F3-9D1F-44F7-B387-3EEFD9B08AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F1318F3-9D1F-44F7-B387-3EEFD9B08AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F1318F3-9D1F-44F7-B387-3EEFD9B08AAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2F1318F3-9D1F-44F7-B387-3EEFD9B08AAA} = {B94E1AC2-34BA-4F94-A7E4-C4C419F859B6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CC301AB-A042-47A9-9D4B-7AD62A4B9373}
+	EndGlobalSection
+EndGlobal
