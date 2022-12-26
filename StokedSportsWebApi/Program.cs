@@ -26,7 +26,7 @@ namespace Productive
                 .CreateLogger();
             try
             {
-                Log.Information("Starting Fucking Productive Service Project!");
+                Log.Information("Starting Service Project!");
                 CreateHostBuilder(args).Build().Run();
                 return 0;
             }
