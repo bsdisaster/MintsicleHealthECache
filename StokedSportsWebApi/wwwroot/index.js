@@ -1,19 +1,4 @@
 ﻿
-window.addEventListener("load", (event) => {
-    const element = document.getElementById("btnLogin");
-    element.addEventListener("click", login);
-});
-
-
-async function login() {
-    var loginData = {
-        "Email": document.querySelector("#txtEmail").value,
-        "Password": document.querySelector("#txtPassword").value
-    }
-    debugger;
-    var loginResponse = await sendUnauthorizedRequestAsync("../api/identity/Login", "POST",loginData)
-}
-
 async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
 
     const settings = {
