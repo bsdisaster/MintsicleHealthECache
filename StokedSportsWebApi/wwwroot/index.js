@@ -1,4 +1,30 @@
-﻿
+﻿let response = await sendUnauthorizedRequestAsync("../api/Identity/Users", "POST", {})
+});
+function login(event) {
+    //store the username
+    //store password
+    //validate username and password
+    //send request to server to get a token
+    //take user to secure page
+
+    let email = document.getElementById("txtEmail").value;
+    let password = document.getElementById("txtPassword").value;
+}
+function validatePassword(password) {
+    var password = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+    if (!validatePassword(password)) {
+        alert("false, try again")
+        return invalid;
+    }
+    else {
+        alert("Success!")
+        return Valid;
+    }
+}
+debugger;
+
+
+
 async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
 
     const settings = {
