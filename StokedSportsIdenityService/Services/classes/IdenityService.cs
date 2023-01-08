@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using IdenityService.Data.DTOs.Requests;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -107,6 +108,11 @@ namespace Productive
         public async Task<FPAccount> GetFpAccount(string email)
         {
             return await _userRepository.GetFpAccount(email);
+        }
+
+        public List<Patient> GetAllPatients(SeachCriteria seachrCriteria)
+        {
+            return _userRepository.GetAllPatients(seachrCriteria);
         }
     }
 }
