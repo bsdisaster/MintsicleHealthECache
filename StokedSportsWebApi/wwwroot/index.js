@@ -25,8 +25,11 @@ debugger;
 
 
 
-async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
+function validateEmail(email) {
 
+}
+
+async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
     const settings = {
         method: methodType,
         headers: {
@@ -34,11 +37,8 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.Access_Token}`,
         }
-    };
-
-    if (data !== null) {
+    }; if (data !== null) {
         settings['body'] = JSON.stringify(data)
-
     }
     try {
         const fetchResponse = await fetch("../api/" + apiUrl, settings);
@@ -49,18 +49,15 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
     }
 }
 async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
-
     const settings = {
         method: methodType,
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-
     };
     if (data !== null) {
         settings['body'] = JSON.stringify(data)
-
     }
     try {
         const fetchResponse = await fetch("../api/" + apiUrl, settings);
@@ -69,5 +66,4 @@ async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
     } catch (e) {
         return e;
     }
-
 }
