@@ -8,17 +8,25 @@ function login(event) {
     //store the username
     //store password
     //validate username and password
-    //send request to server to get a token
+    //send request to server to get a token 
     //take user to secure page
     debugger;
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
-    console.log(email);
-    console.log(password);
+    if (!validEmail()); {
+        alert("This is not a valid email");
+    }
 }
 
 function validateEmail(email) {
-
+    debugger;
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
+        return (true);
+    }
+    else {
+        alert("You have entered an invalid email address!");
+        return (false);
+    }
 }
 
 async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
