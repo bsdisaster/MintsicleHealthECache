@@ -1,18 +1,29 @@
-﻿window.addEventListener("load", async function (event) {
-    //research selecting DOM elements with javascript (get element by ID)
-    //research event listeners with js
-    let response = await sendUnauthorizedRequestAsync("../api/Identity/Users", "POST", {});
+﻿let response = await sendUnauthorizedRequestAsync("../api/Identity/Users", "POST", {})
 });
-
 function login(event) {
     //store the username
     //store password
     //validate username and password
     //send request to server to get a token 
     //take user to secure page
-    debugger;
+
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
+}
+function validatePassword(password) {
+    var password = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+    if (!validatePassword(password)) {
+        alert("false, try again")
+        return invalid;
+    }
+    else {
+        alert("Success!")
+        return Valid;
+    }
+}
+debugger;
+
+
     if (!validEmail()); {
         alert("This is not a valid email");
     }
