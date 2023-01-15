@@ -10,7 +10,6 @@ function login(event) {
     //store token in local storage
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
-    debugger;
     if (!validatePassword(password)) {
         alert("Invalid password, please enter a valid password")
         return false;
@@ -33,7 +32,6 @@ function login(event) {
 
 
     function validateEmail(email) {
-        debugger;
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
             return (true);
         }
