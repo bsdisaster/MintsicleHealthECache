@@ -1,43 +1,52 @@
-﻿let response = await sendUnauthorizedRequestAsync("../api/Identity/Users", "POST", {})
-});
-function login(event) {
-    //store the username
-    //store password
-    //validate username and password
-    //send request to server to get a token 
-    //take user to secure page
+﻿
+addEventListener("load", (event) => {
 
+    //call isLoggedIn
+
+});
+
+function login(event) {
+    //send request to server to get a token
+    //store token in local storage
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
-}
-function validatePassword(password) {
-    var password = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+    debugger;
     if (!validatePassword(password)) {
-        alert("false, try again")
-        return invalid;
+        alert("Invalid password, please enter a valid password")
+        return false;
     }
     else {
         alert("Success!")
-        return Valid;
+        return true;
     }
-}
-debugger;
+    function validatePassword(password) {
+        const passwordMinLength = 8
+        let passwordLength = password.length
+        if (passwordLength < passwordMinLength) {
+            return false
+        };
+        let NumberisInteger = number.isInteger
+        if (NumberisInteger(0, 9)) { return true };
+        let spclCharacter = spcl.Character
+        if (spclCharacter("!@#$%^&*()") { return true };
+    }
 
 
-    if (!validEmail()); {
-        alert("This is not a valid email");
+    function validateEmail(email) {
+        debugger;
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
+            return (true);
+        }
+        else {
+            alert("You have entered an invalid email address!");
+            return (false);
+        }
     }
-}
 
-function validateEmail(email) {
-    debugger;
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
-        return (true);
-    }
-    else {
-        alert("You have entered an invalid email address!");
-        return (false);
-    }
+async function isLoggedIn() {
+    let isLoggedIn = true
+    //if true display search area and hide loginArea
+
 }
 
 async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
