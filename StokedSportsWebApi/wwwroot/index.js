@@ -1,8 +1,7 @@
 ﻿
 addEventListener("load", (event) => {
-
+    await isLoggedIn();
     //call isLoggedIn
-
 });
 
 function login(event) {
@@ -44,7 +43,14 @@ function login(event) {
 async function isLoggedIn() {
     let isLoggedIn = true
     //if true display search area and hide loginArea
-
+    if (isLoggedIn == true) {
+        alert("You are logged in!");  
+        
+    function changeVisibility() {
+            document.getElementById('loginArea').style.display = "none";
+            document.getElementById('searchArea').style.display = "block";
+        }
+    }
 }
 
 async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
