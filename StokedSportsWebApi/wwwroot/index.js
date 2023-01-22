@@ -1,7 +1,10 @@
 ﻿
 addEventListener("load", (event) => {
-    await isLoggedIn();
-    //call isLoggedIn
+    if (isLoggedIn()) {
+        showSearch()
+    } else {
+        showLogin()
+    }
 });
 
 function login(event) {
@@ -17,42 +20,48 @@ function login(event) {
         alert("Success!")
         return true;
     }
-    function validatePassword(password) {
-        const passwordMinLength = 8
-        let passwordLength = password.length
-        if (passwordLength < passwordMinLength) {
-            return false
-        };
-        let NumberisInteger = number.isInteger
-        if (NumberisInteger(0, 9)) { return true };
-        let spclCharacter = spcl.Character
-        if (spclCharacter("!@#$%^&*()") { return true };
+
+}
+
+function validatePassword(password) {
+    const passwordMinLength = 8
+    let passwordLength = password.length
+    if (passwordLength < passwordMinLength) {
+        return false
+    };
+    let NumberisInteger = number.isInteger
+    if (NumberisInteger(0, 9)) { return true; }
+    let spclCharacter = spcl.Character
+    if (spclCharacter("!@#$%^&*\(\)")) {
+        return true;
     }
+}
 
 
-    function validateEmail(email) {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
-            return (true);
-        }
-        else {
-            alert("You have entered an invalid email address!");
-            return (false);
-        }
+function validateEmail(email) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
+        return (true);
     }
+    else {
+        alert("You have entered an invalid email address!");
+        return (false);
+    }
+}
 
 async function isLoggedIn() {
     let isLoggedIn = true
     //if true display search area and hide loginArea
-    if (isLoggedIn == true) {
-        alert("You are logged in!");  
-        
-    function changeVisibility() {
-            document.getElementById('loginArea').style.display = "none";
-            document.getElementById('searchArea').style.display = "block";
-        }
-    }
+    return isLoggedIn
 }
 
+function showSearch() {
+    document.getElementById('loginArea').classList.add("visually-hidden-focusable");
+    document.getElementById('searchArea').classList.remove("visually-hidden-focusable");
+}
+function showLogin() {
+    document.getElementById('loginArea').classList.remove("visually-hidden-focusable");
+    document.getElementById('searchArea').classList.add("visually-hidden-focusable");
+}
 async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
     const settings = {
         method: methodType,
