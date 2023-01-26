@@ -34,7 +34,7 @@ namespace Productive
         }
 
         [HttpPost]
-        [Route("Login")]
+        [Route("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginRequest user)
         {
           //  var userInDb = await _identityService.GetUser(user.Email);
