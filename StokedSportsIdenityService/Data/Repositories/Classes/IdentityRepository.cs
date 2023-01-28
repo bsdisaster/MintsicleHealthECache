@@ -32,7 +32,7 @@ namespace Productive
                 UserName = user.Username,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Image = user.Image,
+                //Image = user.Image,
             };
             await _context.FPAccount.AddAsync(fpAccount);
             await _context.SaveChangesAsync();

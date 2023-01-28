@@ -38,9 +38,9 @@ namespace Productive
         public async Task<IActionResult> Login(UserLoginRequest user)
         {
             var jwtToken = await _identityService.GetUserToken(user, ModelState);
-            var fpAccount = await _identityService.GetFpAccount(user.UserName);
+            //var fpAccount = await _identityService.GetFpAccount(user.UserName);
 
-            return Ok(new { JwtToken = jwtToken, UserId = fpAccount.Id, IsAuthenticated = true });
+            return Ok(new { JwtToken = jwtToken, IsAuthenticated = true });
         }
 
         [HttpPost]

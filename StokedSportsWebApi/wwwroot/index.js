@@ -16,7 +16,8 @@ async function getToken(email, password) {
         "password": password,
     };
 
-       let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
+    let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
+    localStorage.setItem("authData", response.jwtToken);
 }
 
     function validatePassword(password) {
