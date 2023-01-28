@@ -10,7 +10,7 @@ using Microsoft.Extensions.Options;
 
 namespace Productive
 {
-    [Route("api/[controller]")] // api/identity
+    [Route("api/identity")] // api/identity
     [ApiController]
     public class IdentityController : ControllerBase
     {
@@ -25,7 +25,7 @@ namespace Productive
         }       
 
         [HttpPost]
-        [Route("Create")]        
+        [Route("create")]        
         public async Task<IActionResult> Register([FromBody] UserRegistrationDto user)        
         {
             var jwtToken = await _identityService.CreateAsync(user, ModelState);
@@ -35,17 +35,16 @@ namespace Productive
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] UserLoginRequest user)
+        public async Task<IActionResult> Login(UserLoginRequest user)
         {
-          //  var userInDb = await _identityService.GetUser(user.Email);
             var jwtToken = await _identityService.GetUserToken(user, ModelState);
-            var fpAccount = await _identityService.GetFpAccount(user.Email);
+            var fpAccount = await _identityService.GetFpAccount(user.UserName);
 
             return Ok(new { JwtToken = jwtToken, UserId = fpAccount.Id, IsAuthenticated = true });
         }
 
         [HttpPost]
-        [Route("Patients")]
+        [Route("patients")]
         public IActionResult PatientSearch(SeachCriteria seachrCriteria)
         {
             

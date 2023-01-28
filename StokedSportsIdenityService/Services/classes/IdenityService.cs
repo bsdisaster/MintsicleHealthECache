@@ -37,7 +37,7 @@ namespace Productive
             {
                 throw new ArgumentException("User info is missing cannot login");
             }
-            var existingUser = await GetUser(user.Email);
+            var existingUser = await GetUser(user.UserName);
             if (existingUser == null)
             {
                 throw new KeyNotFoundException("A user with the entered credentials does not exist ");

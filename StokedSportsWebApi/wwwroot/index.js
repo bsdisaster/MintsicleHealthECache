@@ -1,11 +1,10 @@
 ﻿
 addEventListener("load", (event) => {
-    //call isLoggedIn
+
 
 });
 
 async function login(event) {
-    debugger;
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
     let token = await getToken(email, password);
@@ -15,8 +14,9 @@ async function getToken(email, password) {
     let loginData = {
         "userName": email,
         "password": password,
-    }; debugger;
-        let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
+    };
+
+       let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
 }
 
     function validatePassword(password) {
@@ -60,7 +60,7 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
         settings['body'] = JSON.stringify(data)
     }
     try {
-        const fetchResponse = await fetch("../api/" + apiUrl, settings);
+        const fetchResponse = await fetch("/api/" + apiUrl, settings);
         const data = await fetchResponse.json();
         return data;
     } catch (e) {
@@ -68,6 +68,7 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
     }
 }
 async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
+
     const settings = {
         method: methodType,
         headers: {
@@ -76,10 +77,12 @@ async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
         },
     };
     if (data !== null) {
-        settings['body'] = JSON.stringify(data)
+        settings['body'] = JSON.stringify(data);
     }
     try {
-        const fetchResponse = await fetch("api/" + apiUrl, settings);
+        debugger;
+        let url = "api/" + apiUrl;
+        const fetchResponse = await fetch(url, settings);
         const data = await fetchResponse.json();
         return data;
     } catch (e) {
