@@ -1,19 +1,27 @@
 ﻿
 addEventListener("load", (event) => {
-    if (isLoggedIn()) {
+    showLoggedIn();
+
+});
+function showLoggedIn() {
+    debugger
+      if (!isLoggedIn()) {
         showSearch()
     } else {
         showLogin()
     }
-});
-
+    
+}
 async function login(event) {
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
     
-    let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
-    localStorage.setItem("authData", response.jwtToken);    
+    let response = await getToken(email, password);
+    if (response.jwtToken) {
+        localStorage.setItem("authData", response.jwtToken);
 
+    }   
+    showLoggedIn();
 }
 
 async function getToken(email, password) {
@@ -23,7 +31,7 @@ async function getToken(email, password) {
     };
 
     let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
-    localStorage.setItem("authData", response.jwtToken);
+    
 }
 
     function validatePassword(password) {
@@ -51,9 +59,14 @@ function validateEmail(email) {
 }
 
 async function isLoggedIn() {
-    let isLoggedIn = true
-    //if true display search area and hide loginArea
-    return isLoggedIn
+   
+    let authData = localStorage.getItem("authData");
+    if (authData) {
+        return true;
+    }
+    else {
+        return false; 
+    }
 }
 
 function showSearch() {
@@ -87,7 +100,6 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
 }
 
 async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
-
     const settings = {
         method: methodType,
         headers: {
@@ -99,7 +111,6 @@ async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
         settings['body'] = JSON.stringify(data);
     }
     try {
-        debugger;
         let url = "api/" + apiUrl;
         const fetchResponse = await fetch(url, settings);
         const data = await fetchResponse.json();
