@@ -16,20 +16,6 @@ async function login(event) {
 
 }
 
-function validatePassword(password) {
-    const passwordMinLength = 8
-    let passwordLength = password.length
-    if (passwordLength < passwordMinLength) {
-        return false
-    };
-    let NumberisInteger = number.isInteger
-    if (NumberisInteger(0, 9)) { return true; }
-    let spclCharacter = spcl.Character
-    if (spclCharacter("!@#$%^&*\(\)")) {
-        return true;
-    let token = await getToken(email, password);
-}
-
 async function getToken(email, password) {
     let loginData = {
         "userName": email,
@@ -51,7 +37,7 @@ async function getToken(email, password) {
         let spclCharacter = spcl.Character
         //if (spclCharacter("!@#$%^&*()") { return true };
     }
-}
+
 
 
 function validateEmail(email) {
@@ -86,7 +72,9 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.Access_Token}`,
         }
-    }; if (data !== null) {
+    };
+
+    if (data !== null) {
         settings['body'] = JSON.stringify(data)
     }
     try {
@@ -97,6 +85,7 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
         return e;
     }
 }
+
 async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
 
     const settings = {
