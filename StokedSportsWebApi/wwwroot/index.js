@@ -1,23 +1,25 @@
 ﻿
 addEventListener("load", (event) => {
 
-    //call isLoggedIn
 
 });
 
-function login(event) {
-    //send request to server to get a token
-    //store token in local storage
+async function login(event) {
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
-    if (!validatePassword(password)) {
-        alert("Invalid password, please enter a valid password")
-        return false;
-    }
-    else {
-        alert("Success!")
-        return true;
-    }
+    let token = await getToken(email, password);
+}
+
+async function getToken(email, password) {
+    let loginData = {
+        "userName": email,
+        "password": password,
+    };
+
+    let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
+    localStorage.setItem("authData", response.jwtToken);
+}
+
     function validatePassword(password) {
         const passwordMinLength = 8
         let passwordLength = password.length
@@ -27,7 +29,7 @@ function login(event) {
         let NumberisInteger = number.isInteger
         if (NumberisInteger(0, 9)) { return true };
         let spclCharacter = spcl.Character
-        if (spclCharacter("!@#$%^&*()") { return true };
+        //if (spclCharacter("!@#$%^&*()") { return true };
     }
 
 
@@ -59,7 +61,7 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
         settings['body'] = JSON.stringify(data)
     }
     try {
-        const fetchResponse = await fetch("../api/" + apiUrl, settings);
+        const fetchResponse = await fetch("/api/" + apiUrl, settings);
         const data = await fetchResponse.json();
         return data;
     } catch (e) {
@@ -67,6 +69,7 @@ async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
     }
 }
 async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
+
     const settings = {
         method: methodType,
         headers: {
@@ -75,10 +78,12 @@ async function sendUnauthorizedRequestAsync(apiUrl, methodType, data) {
         },
     };
     if (data !== null) {
-        settings['body'] = JSON.stringify(data)
+        settings['body'] = JSON.stringify(data);
     }
     try {
-        const fetchResponse = await fetch("../api/" + apiUrl, settings);
+        debugger;
+        let url = "api/" + apiUrl;
+        const fetchResponse = await fetch(url, settings);
         const data = await fetchResponse.json();
         return data;
     } catch (e) {
