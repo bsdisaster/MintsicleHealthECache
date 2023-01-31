@@ -4,8 +4,8 @@ addEventListener("load", (event) => {
 
 });
 function showLoggedIn() {
-    debugger
-      if (!isLoggedIn()) {
+    
+      if (isLoggedIn()) {
         showSearch()
     } else {
         showLogin()
@@ -13,16 +13,15 @@ function showLoggedIn() {
     
 }
 async function login(event) {
+
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
-    
-    let response = await getToken(email, password);
-    if (response.jwtToken) {
-        localStorage.setItem("authData", response.jwtToken);
-
-    } else {
-        //hide warning div until display is needed
-        //within else, show warning div because token was null
+    var loggedIn = isLoggedIn();
+    if (!loggedIn) {
+        let response = await getToken(email, password);
+        if (response.jwtToken) {
+            localStorage.setItem("token", response.jwtToken);
+        }  
     } 
     showLoggedIn();
 }
@@ -34,7 +33,7 @@ async function getToken(email, password) {
     };
 
     let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
-    
+    return response;
 }
 
     function validatePassword(password) {
@@ -61,10 +60,10 @@ function validateEmail(email) {
     }
 }
 
-async function isLoggedIn() {
+function isLoggedIn() {
    
-    let authData = localStorage.getItem("authData");
-    if (authData) {
+    let token = localStorage.getItem("token");
+    if (token) {
         return true;
     }
     else {
