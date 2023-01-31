@@ -20,7 +20,10 @@ async function login(event) {
     if (response.jwtToken) {
         localStorage.setItem("authData", response.jwtToken);
 
-    }   
+    } else {
+        //hide warning div until display is needed
+        //within else, show warning div because token was null
+    } 
     showLoggedIn();
 }
 
