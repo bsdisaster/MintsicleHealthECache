@@ -1,19 +1,24 @@
-﻿
-addEventListener("load", (event) => {
+﻿addEventListener("load", (event) => {
+    debugger;
     showLoggedIn();
 
+    let emailTextBox = document.getElementById("txtEmail")
+    emailTextBox.addEventListener("keyup", (event) => {
+        document.getElementById('loginAlert').classList.add("visually-hidden");
+    });
 });
-function showLoggedIn() {
-    
-      if (isLoggedIn()) {
-        showSearch()
-    } else {
-        showLogin()
-    }
-    
-}
-async function login(event) {
 
+function showLoggedIn() {
+    if (isLoggedIn()) {
+        showSearch();
+    }
+    else {
+        showLogin();
+        document.getElementById("loginAlert").hidden = false;
+    }
+}
+
+async function login(event) {
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
     var loggedIn = isLoggedIn();
@@ -21,9 +26,12 @@ async function login(event) {
         let response = await getToken(email, password);
         if (response.jwtToken) {
             localStorage.setItem("token", response.jwtToken);
+        }
+        else {
+            document.getElementById('loginAlert').classList.remove("visually-hidden");
 
-        }  
-    } 
+        }
+    }
     showLoggedIn();
 }
 
@@ -32,24 +40,21 @@ async function getToken(email, password) {
         "userName": email,
         "password": password,
     };
-
     let response = await sendUnauthorizedRequestAsync("identity/login", "POST", loginData)
     return response;
 }
 
-    function validatePassword(password) {
-        const passwordMinLength = 8
-        let passwordLength = password.length
-        if (passwordLength < passwordMinLength) {
-            return false
-        };
-        let NumberisInteger = number.isInteger
-        if (NumberisInteger(0, 9)) { return true };
-        let spclCharacter = spcl.Character
-        //if (spclCharacter("!@#$%^&*()") { return true };
-    }
-
-
+function validatePassword(password) {
+    const passwordMinLength = 8
+    let passwordLength = password.length
+    if (passwordLength < passwordMinLength) {
+        return false
+    };
+    let NumberisInteger = number.isInteger
+    if (NumberisInteger(0, 9)) { return true };
+    let spclCharacter = spcl.Character
+    //if (spclCharacter("!@#$%^&*()") { return true };
+}
 
 function validateEmail(email) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
@@ -62,13 +67,12 @@ function validateEmail(email) {
 }
 
 function isLoggedIn() {
-   
     let token = localStorage.getItem("token");
     if (token) {
         return true;
     }
     else {
-        return false; 
+        return false;
     }
 }
 
@@ -76,10 +80,12 @@ function showSearch() {
     document.getElementById('loginArea').classList.add("visually-hidden-focusable");
     document.getElementById('searchArea').classList.remove("visually-hidden-focusable");
 }
+
 function showLogin() {
     document.getElementById('loginArea').classList.remove("visually-hidden-focusable");
     document.getElementById('searchArea').classList.add("visually-hidden-focusable");
 }
+
 async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
     const settings = {
         method: methodType,
