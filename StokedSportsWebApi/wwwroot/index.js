@@ -1,7 +1,5 @@
 ﻿addEventListener("load", (event) => {
-    debugger;
     showLoggedIn();
-
     let emailTextBox = document.getElementById("txtEmail")
     emailTextBox.addEventListener("keyup", (event) => {
         document.getElementById('loginAlert').classList.add("visually-hidden");
@@ -29,7 +27,6 @@ async function login(event) {
         }
         else {
             document.getElementById('loginAlert').classList.remove("visually-hidden");
-
         }
     }
     showLoggedIn();
