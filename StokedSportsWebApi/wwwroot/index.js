@@ -1,14 +1,21 @@
 ﻿
 addEventListener("load", (event) => {
     showLoggedIn();
+let emailTextBox = document.getElementById("textEmail")
+    emailTextBox.addEventListener("change", (event) => {
+        debugger
+        alert("I ran!")
 
+    });
 });
+
+
 function showLoggedIn() {
-    
       if (isLoggedIn()) {
         showSearch()
     } else {
-        showLogin()
+          showLoggedIn();
+          document.getElementById("loginAlert").add("loginAlert");
     }
     
 }
@@ -16,12 +23,16 @@ async function login(event) {
 
     let email = document.getElementById("txtEmail").value;
     let password = document.getElementById("txtPassword").value;
+    debugger
     var loggedIn = isLoggedIn();
     if (!loggedIn) {
         let response = await getToken(email, password);
         if (response.jwtToken) {
             localStorage.setItem("token", response.jwtToken);
-        }  
+        } else {
+            document.getElementById('loginAlert').classList.remove("visually-hidden");
+        }
+
     } 
     showLoggedIn();
 }
@@ -61,23 +72,23 @@ function validateEmail(email) {
 }
 
 function isLoggedIn() {
-   
     let token = localStorage.getItem("token");
     if (token) {
         return true;
     }
     else {
-        return false; 
+        return false;
+        
     }
-}
+};
 
 function showSearch() {
-    document.getElementById('loginArea').classList.add("visually-hidden-focusable");
-    document.getElementById('searchArea').classList.remove("visually-hidden-focusable");
-}
-function showLogin() {
     document.getElementById('loginArea').classList.remove("visually-hidden-focusable");
     document.getElementById('searchArea').classList.add("visually-hidden-focusable");
+}
+function showLogin() {
+    document.getElementById('loginArea').classList.add("visually-hidden-focusable");
+    document.getElementById('searchArea').classList.remove("visually-hidden-focusable");
 }
 async function sendAuthorizedRequestAsync(apiUrl, methodType, data) {
     const settings = {
