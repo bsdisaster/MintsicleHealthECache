@@ -1,7 +1,7 @@
 ﻿
 function searchPatients(event) {
-    let firstName = getElementById("firstName").value;
-    let lastName = getElementById("lastName").value;
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
         return 
         let searchCriteria = {
             "firstName": firstName,
