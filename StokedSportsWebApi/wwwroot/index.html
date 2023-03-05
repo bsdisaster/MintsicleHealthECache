@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -17,7 +16,6 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">HealthECache</a>
-
                 <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     </ul>
@@ -59,7 +57,6 @@
                                     <div class="d-grid">
                                         <button id="btnLogin" onclick="login()" class="btn btn-outline-dark" type="submit">The Login</button>
                                     </div>
-
                                     <div>
                                         <p class="mb-0  text-center">
                                             Don't have an account? <a href="signup.html" class="text-primary fw-bold">
@@ -72,48 +69,46 @@
                             </div>
                         </section>
                         <section id="searchArea" class="visually-hidden-focusable">
-                            <div>
-                                <div class="card bg-white">
+                            <div class="card bg-white">
+                                <div class="card-body">
                                     <div class="p-3 mb-2 bg-dark text-white">
                                         <h3 class="fw-bold mb-2 text-uppercase ">Search Patients</h3>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label for="firstName" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="First">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label for="firstName" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="firstName" placeholder="First">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="lastName" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Last">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="DOB" class="form-label mt-2">DOB</label>
+                                            <input type="date" class="form-control" id="DOB" placeholder="mm/dd/yyyy">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="visitNum" class="form-label mt-2">Visit#</label>
+                                            <input type="number" class="form-control" id="visitNum" placeholder="######">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="medRec" class="form-label mt-2">Medical Record#</label>
+                                            <input type="number" class="form-control" id="medRec" placeholder="######">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="adminDate" class="form-label mt-2">Admission Date</label>
+                                            <input type="date" class="form-control" id="adminDate" placeholder="mm/dd/yyyy">
+                                        </div>
+                                        <div class="d-grid mt-2 mb-2 col-6 mx-auto">
+                                            <button class="btn btn-primary" type="button">Search</button>
+                                        </div>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="lastName" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="Last">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="DOB" class="form-label">DOB</label>
-                                        <input type="date" class="form-control" id="DOB" placeholder="mm/dd/yyyy">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="visitNum" class="form-label">Visit#</label>
-                                        <input type="number" class="form-control" id="visitNum" placeholder="######">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="medRec" class="form-label">Medical Record#</label>
-                                        <input type="number" class="form-control" id="medRec" placeholder="######">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="adminDate" class="form-label">Admission Date</label>
-                                        <input type="date" class="form-control" id="adminDate" placeholder="mm/dd/yyyy">
-                                    </div>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button id="btnSearch" onclick="searchPatients(event)" class="btn btn-outline-dark" type="submit">Search Patients</button>
                                 </div>
                             </div>
                         </section>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </content>
     <script src="index.js"></script>
