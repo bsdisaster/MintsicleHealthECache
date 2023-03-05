@@ -1,33 +1,37 @@
 ﻿
 function searchPatients(event) {
-    let firstName = getElementById("firstName").value;
-    let lastName = getElementById("lastName").value;
-        return 
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let DOB = document.getElementById("DOB").value;
+    let visitNum = document.getElementById("Visit#").value;
+    let medRec = document.getElementById("MedicalRecord").value;
+    let adminDate = document.getElementById("AdmissionDate").value;
         let searchCriteria = {
             "firstName": firstName,
             "lastName": lastName,
             "DOB": DOB,
-            "Visit#": VisitNum,
-            "MedicalRecord": MedicalRecord,
-            "AdmissionDate": AdmissionDate,
-        };
-    let isValidSearch = validSearch (searchCriteria)
-    //validate successful search criteria
-        //return true if criteria is met
-        //return false if criteria is not met
+            "Visit#": visitNum,
+            "MedicalRecord": medRec,
+            "AdmissionDate": adminDate,
+        };   
 }
-function validSearch(searchcriteria) {
-    
-    if (searchCriteria.firstName.length < 1 || searchCriteria.lastName < 1) {
-        return false
+
+function validSearch(searchCriteria) { 
+    if (searchCriteria.firstName.length > 0 || searchCriteria.lastName > 0) {
+        return true
     }
-    return true
-    if (searchCriteria.DOB.length < 1 || searchCriteria.VisitNum < 1) {
-        return false
+    if (searchCriteria.DOB.length > 0 || searchCriteria.VisitNum > 0) {
+        return true
     }
-    return true
-    if (searchCriteria.MedicalRecord < 1 || searchCriteria.AdmissionDate < 1) {
-        return false 
+    if (searchCriteria.MedicalRecord > 0 || searchCriteria.AdmissionDate > 0) {
+        return true 
     }
-    return true
+    return false
 }
+
+let isValidSearch = validSearch(searchCriteria)
+if (searchCriteria ==> true) {
+    return 
+}
+
+
