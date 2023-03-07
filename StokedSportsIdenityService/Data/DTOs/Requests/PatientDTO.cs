@@ -98,11 +98,12 @@ namespace IdenityService.Data.DTOs.Requests
         public DateTime DOB { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string AccountNumber { get; set; }
-        public string MedicalRecordNumber { get; set; }
+        public string VisitNum { get; set; }
+        public string MedicalRecord { get; set; }
+		public DateTime AdmissionDate { get; set; }
 
 
-    }
+	}
 
 }
 

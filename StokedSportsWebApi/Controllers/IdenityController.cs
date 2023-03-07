@@ -43,12 +43,13 @@ namespace Productive
             return Ok(new { JwtToken = jwtToken, IsAuthenticated = true });
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("patients")]
-        public IActionResult PatientSearch(SeachCriteria seachrCriteria)
+        public IActionResult PatientSearch(SeachCriteria searchCriteria)
         {
             
-            return Ok(_identityService.GetAllPatients(seachrCriteria));
+            return Ok(_identityService.GetAllPatients(searchCriteria));
         }
     }
 }
